@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+
+  <title> hermosa</title>
+  <style>
+    :root {
+      --primary-color: #ff6f91;
+      --secondary-color: #ff9671;
+      --background-color: #fff0f5;
+      --text-color: #333;
+      --accent-color: #ffc75f;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 1.5em 2em;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3em;
+      color: white;
+      margin-bottom: 0.3em;
+    }
+    nav {
+      margin-top: 1em;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+    /* Sección principal */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2em;
+      background: url('https://source.unsplash.com/1600x900/?romance') center/cover no-repeat;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      color: var(--primary-color);
+    }
+    .hero-content p {
+      font-size: 1.3em;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 1em;
+    }
+    .heart-btn {
+      background-color: var(--accent-color);
+      border: none;
+      padding: 0.8em 1.5em;
+      font-size: 1.2em;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .heart-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    /* Sección Acerca de */
+    .about {
+      padding: 3em 2em;
+      text-align: center;
+    }
+    .about h2 {
+      font-size: 2.2em;
+      margin-bottom: 1em;
+      color: var(--primary-color);
+    }
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1em;
+      margin-bottom: 1em;
+    }
+    /* Galería */
+    .gallery {
+      padding: 3em 2em;
+      background-color: #ffeef8;
+    }
+    .gallery h2 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 1.5em;
+      color: var(--primary-color);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1em;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    /* Contacto */
+    .contact {
+      padding: 3em 2em;
+      text-align: center;
+    }
+    .contact h2 {
+      font-size: 2.2em;
+      margin-bottom: 1em;
+      color: var(--primary-color);
+    }
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .contact input, .contact textarea {
+      padding: 0.8em;
+      border: 2px solid var(--primary-color);
+      border-radius: 5px;
+      font-size: 1em;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .contact input:focus, .contact textarea:focus {
+      border-color: var(--secondary-color);
+    }
+    .contact button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8em;
+      font-size: 1.1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .contact button:hover {
+      background-color: var(--secondary-color);
+    }
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 1em;
+      position: relative;
+    }
+    footer p {
+      font-size: 0.9em;
+    }
+    /* Botón de scroll-to-top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.7em 1em;
+      border-radius: 50px;
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    /* Animaciones de aparición */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      .hero-content h2 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi Amor Eterno</h1>
+       <ul>
+   
+
+  <!-- Sección Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content fade-in">
+      <h2>Siempre Juntos</h2>
+      <p>
+        Esta página es un reflejo del amor y la felicidad que compartimos. Gracias por iluminar mi vida con tu sonrisa.
+      </p>
+      <button class="heart-btn" id="heartBtn">¡Dale clic y siente el amor!</button>
+    </div>
+  </section>
+
+  <!-- Sección Acerca de -->
+
+    <p class="fade-in">
+      Desde el primer momento que te vi, supe que eras especial. Cada risa, cada abrazo y cada sueño compartido han tejido una historia llena de amor.
+    </p>
+    <p class="fade-in">
+      Esta página es solo un pequeño tributo a la increíble conexión que tenemos. ¡Te amo con todo mi corazón!
+    </p>
+  </section>
+
+  <!-- Galería -->
+  <section class="gallery" id="gallery">
+    <h2 class="fade-in">BESO</h2>
+    <div class="gallery-grid">
+      <img src="holaaaa.jpg" alt="Imagen de amor" class="fade-in">
+      <img src="holaaa.jpg" alt="Imagen romántica" class="fade-in">
+      <img src="hola.jpg" alt="Pareja feliz" class="fade-in">
+      <img src="holaaaaa.jpg" alt="Corazón" class="fade-in">
+    </div>
+  </section>
+
+  <!-- Contacto -->
+ 
+
+  <footer>
+    <p>&copy; 2025 Mi Amor Eterno - Creado con pasión y dedicación</p>
+  </footer>
+
+  <!-- Botón scroll-to-top -->
+  <button class="scroll-top" id="scrollTop">↑</button>
+
+  <!-- JavaScript para interactividad -->
+  <script>
+    // Botón para mostrar una alerta romántica
+    document.getElementById('heartBtn').addEventListener('click', function() {
+      alert("¡Te amo más de lo que las palabras pueden expresar!");
+    });
+
+    // Botón scroll-to-top
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    });
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Animar elementos al hacer scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+</body>
+</html>
